@@ -1,0 +1,118 @@
+
+main {
+  display: flex;
+  /* justify-content: space-between; */
+}
+#Staff_List {
+  height: auto;
+  width: 30%;
+  border: solid rgb(165, 79, 3) 3px;
+  border-radius: 12px;
+}
+#floor_plan {
+  background-image: url(photo/background.png) ;
+  background-size: cover;
+  background-position: center;
+  border: solid rgb(165, 79, 3) 3px;
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+#conf-recep {
+  width: 40%;
+  height: auto;
+}
+
+#Conference {
+  height: auto;
+  width: 100%;
+}
+
+#Reception {
+  height: auto;
+}
+
+#serv_secur_staf_arch {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  height: 76%;
+}
+
+#sp2 {
+  width: 100%;
+  height: 28%;
+}
+#sp1 {
+  width: 17%;
+  height: auto;
+}
+
+#Serv_secur {
+  display: flex;
+  width: 100%;
+  height: 35%;
+}
+
+#staf_arch {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+#server {
+  width: 50%;
+  height: auto;
+}
+
+#Security {
+  width: 50%;
+  height: auto;
+}
+
+#Staff {
+  width: 50%;
+  height: auto;
+}
+#archive {
+  width: 50%;
+  height: auto;
+}
+
+#img1 {
+  width: 100%;
+  /* border-radius: 2%;  */
+}
+#img2 {
+  width: 100%;
+  /* border-radius: 3%; */
+}
+#img3 {
+  width: 100%;
+  height: 100%;
+}
+#img4 {
+  width: 100%;
+  height: 100%;
+}
+#img5 {
+  width: 100%;
+  height: 100%;
+}
+#img6 {
+  width: 100%;
+  height: 100%;
+}
+
+#img7 {
+  width: 100%;
+  height: 100%;
+}
+#img8 {
+  width: 100%;
+  height: 100%;
+}
+
