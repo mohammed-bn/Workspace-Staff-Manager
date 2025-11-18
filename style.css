@@ -115,4 +115,42 @@ main {
   width: 100%;
   height: 100%;
 }
+@media (max-width: 768px) {
+    body{
+        margin: 0;
+        padding: 0;
+    }
+  main {
+    flex-direction: column;
+    width: 100%;
+  }
+  #Staff_List {
+    width: 100%;
+  }
+  #floor_plan {
+    flex-direction: column;
+  }
+  #sp2,
+  #sp1 {
+    display: none;
+  }
+  #Serv_secur ,#staf_arch {
+ flex-direction: column;
 
+}
+#server ,#Security {
+  width: 100%;
+}
+#conf-recep {
+  width: 100%;
+
+}
+#serv_secur_staf_arch {
+  width: 100%;
+  height: 100%;
+}
+#Staff , #archive {
+  width: 100%;
+
+}
+}
