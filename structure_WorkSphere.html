@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspace Staff Manager</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <main>
         <div id="Staff_List">
-            <button>Ajouter un employé </button>
+            <div id="form">
+                <div>
+                    <h2 id="title">Unassigned Staff</h2>
+                </div>
+            </div>
+            <div id="add_worker">
+                <button id="btn_worker">+Ajouter un employé</button>
+            </div>
         </div>
         <div id="floor_plan">
-            <div id="conf-recep"> 
+            <div id="conf-recep">
                 <div id="Conference" class="room">
                     <img id="img1" src="photo/Conference_room.png" alt="Salle de conférence">
+                    <button class="add_in_room" id="add_in_conference">+</button>
                 </div>
                 <div id="Reception" class="room">
                     <img id="img2" src="photo/Reception.png" alt="Réception">
+                    <button class="add_in_room" id="add_in_reception">+</button>
                 </div>
             </div>
             <div id="sp1">
@@ -27,9 +41,11 @@
                 <div id="Serv_secur">
                     <div id="server" class="room">
                         <img id="img3" src="photo/server.png" alt="Salle des serveurs">
+                        <button class="add_in_room" id="add_in_server">+</button>
                     </div>
                     <div id="Security" class="room">
                         <img id="img4" src="photo/security.png" alt="Salle de sécurité">
+                        <button class="add_in_room" id="add_in_security">+</button>
                     </div>
                 </div>
                 <div id="sp2">
@@ -38,13 +54,93 @@
                 <div id="staf_arch">
                     <div id="Staff" class="room">
                         <img id="img5" src="photo/staff.png" alt="Salle du personnel">
+                        <button class="add_in_room" id="add_in_staff">+</button>
                     </div>
                     <div id="archive" class="room">
                         <img id="img6" src="photo/archive.png" alt="Salle d'archives">
+                        <button class="add_in_room" id="add_in_archive">+</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal_global" id="manage-modale" style="display: none;">
+            <div class="modal_body">
+                <div class="container_btn_titel">
+                    <h2 id="modal-title">Ajouter une employé</h2>
+                    <button class="modal-close-btn" id="close_modal" aria-label="Fermé">x</button>
+                </div>
+                <div id="forms">
+                    <form class="info-form" id="info-form" novalidate>
+                        <div id="neme" class="container_info">
+                            <label for="name">name : </label><br>
+                            <input class="input_info" type="text" name="" id="name">
+                            <span></span>
+                        </div>
+                        <div class="container_info">
+                            <label for="role">role : </label><br>
+                            <select class="input_info" id="role" class="input_info">
+                                <option value="Réceptionnistes">Réceptionnistes</option>
+                                <option value="Techniciens IT">Techniciens IT</option>
+                                <option value=" Agents de sécurité"> Agents de sécurité</option>
+                                <option value="Manager">Manager </option>
+                                <option value="Nettoyage">Nettoyage</option>
+                                <option value="Autres rôles ">Autres rôles </option>
+                            </select>
+                            <span></span>
+                        </div>
+                        <div class="container_info">
+                            <label for="photo">photo (url) :</label><br>
+                            <input class="input_info" type="text" id="photo">
+                            <span></span>
+                        </div>
+                        <div>
+                            <img id="esp_photo" src="" alt="espace_photo">
+                        </div>
+                        <div class="container_info">
+                            <label for="Email">Email : </label><br>
+                            <input class="input_info" type="email" id="Email">
+                            <span></span>
+                        </div>
+                        <div class="container_info">
+                            <label for="phone">phone : </label><br>
+                            <input class="input_info" type="tel" id="phone">
+                            <span></span>
+                        </div>
+                    </form>
+                        <button id="but_add_exp">ajouté un  expériences</button>
+                    <form class="exp-form" id="exp-form" novalidate>
+                        <div class="container_info">
+                            <label for="text"> entreprise : </label><br>
+                            <input class="input_info" type="text" id="expérience">
+                            <span></span>
+                        </div>
+                        <div class="container_info">
+                            <label for="text"> rôle : </label><br>
+                            <input class="input_info" type="text" id="rôle">
+                            <span></span>
+                        </div>
+                        <div class="container_info">
+                            <label for="date">date de début : </label><br>
+                            <input class="input_info" type="date">
+                            <span></span>
+                        </div>
+                        <div class="container_info">
+                            <label for="date"> date de fin : </label><br>
+                            <input class="input_info" type="date">
+                            <span></span>
+                        </div>
+                    </form>
+                    <div class="btn_form">
+                        <button id="but_fermme">fermme</button>
+                        <button id="but_enregistrer">enregistrer</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </main>
 </body>
+<script src="Workspace-Staff-Manager.js"></script>
+
 </html>
