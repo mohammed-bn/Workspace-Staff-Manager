@@ -13,15 +13,6 @@
         rel="stylesheet">
 </head>
 
-
-
-
-
-
-
-
-
-
 <body>
     <section>
         <main>
@@ -31,9 +22,9 @@
                     <div id="Staffs">
 
                     </div>
-                </div>
                 <div id="add_worker">
                     <button id="btn_worker">+Ajouter un employé</button>
+                </div>
                 </div>
             </div>
             <div id="floor_plan">
@@ -47,9 +38,6 @@
                         <button class="add_in_room" id="add_in_reception">+</button>
                     </div>
                 </div>
-                <div id="sp1">
-                    <img id="img8" src="photo/espace1.png" alt="espace vide">
-                </div>
                 <div id="serv_secur_staf_arch">
                     <div id="Serv_secur">
                         <div id="server" class="room">
@@ -60,9 +48,6 @@
                             <img id="img4" src="photo/security.png" alt="Salle de sécurité">
                             <button class="add_in_room" id="add_in_security">+</button>
                         </div>
-                    </div>
-                    <div id="sp2">
-                        <img id="img7" src="photo/ecpace2.png" alt="espace vide">
                     </div>
                     <div id="staf_arch">
                         <div id="Staff" class="room">
@@ -76,13 +61,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
             <div class="modal_global" id="manage-modale" style="display: none">
                 <div class="modal_body">
                     <div class="container_btn_titel">
@@ -94,9 +72,10 @@
                     <div id="forms">
                         <form class="" id="info-form" novalidate>
                             <div class="info_global">
+                                
                                 <div class="container_info" id="espace_photo">
                                     <div class="esp_photo">
-                                        <img class="photo" src="photo/photopro.jpeg" alt="">
+                                        <img class="photo" id="photo_url" src="" alt="">
                                     </div>
                                     <label for="photo">photo (url) :</label><br>
                                     <input class="input_info" type="url" id="photo">
@@ -140,6 +119,17 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+            <div class="modal_global" id="modale_information">
+                <div class="modal_body">
+                    <button id="fermé_modale_information"><i class="fa-solid fa-rectangle-xmark"></i></button>
+                    <h3 id="">informaition imployée</h3>
+                    <p id="name_info"></p>
+                    <p id="role_info"></p>
+                    <p id="email_info"></p>
+                    <p id="phone_info"></p>
+                    <div id="experiences_info"></div>
                 </div>
             </div>
         </main>
