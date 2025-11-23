@@ -1,55 +1,83 @@
 *{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0px;
+  margin: 0px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 main {
   display: flex;
 }
+
 #Staff_List {
-  height: auto;
+  height: 100vh;
   width: 30%;
   border: solid blue 3px;
-  border-radius: 12px;
+}
+
+#card-employe{
+  width: 95%;
+  height: 85%;
+  background-color: rgb(77, 77, 230);
+  display: flex;
+  justify-self: center;
+  border-radius: 2px;
+  border-radius: 30PX;
+  justify-content: space-between;
+  padding: 2%;
+}
+
+.content_card{
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  justify-content: space-between;
+  gap: 8%;
+}
+
+.fa-solid{
+  height: 100%;
+  width: 100%;
+  color: rgb(12, 70, 122);
+}
+
+#employe-btn{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 15%;
 }
 #floor_plan {
-  background-image: url(photo/background.png) ;
+  background-image: url(photo/background.png);
   background-size: cover;
   background-position: center;
   border-radius: 12px;
-  height: 100%;
   width: 100%;
   display: flex;
-  margin: 0;
-  padding: 0;
+  justify-content: space-between;
 }
 #conf-recep {
   width: 40%;
-  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #Conference {
-  height: auto;
+  height: 36%;
   width: 100%;
 }
 
 #Reception {
-  height: auto;
+  height: 64%;
+  width: 100%;
 }
 
 #serv_secur_staf_arch {
   width: 47%;
   display: flex;
   flex-direction: column;
-  height: 76%;
+ justify-content: space-between;
 }
 
-#sp2 {
-  width: 100%;
-  height: 28%;
-}
-#sp1 {
-  width: 17%;
-  height: auto;
-}
 
 #Serv_secur {
   display: flex;
@@ -60,7 +88,7 @@ main {
 #staf_arch {
   display: flex;
   width: 100%;
-  height: auto;
+  height: 38%;
 }
 
 #server {
@@ -84,11 +112,11 @@ main {
 
 #img1 {
   width: 100%;
-  /* border-radius: 2%;  */
+  height: 100%;
 }
 #img2 {
   width: 100%;
-  /* border-radius: 3%; */
+  height: 100%;
 }
 #img3 {
   width: 100%;
@@ -107,27 +135,27 @@ main {
   height: 100%;
 }
 
-#img7 {
+/* #img7 {
   width: 100%;
   height: 100%;
 }
 #img8 {
   width: 100%;
   height: 100%;
-}
+} */
 
 .add_in_room{
-    height: 14%;
-    width: 13%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 0, 255);
-    border: none;
-    border-radius: 12%;
-    position:absolute;
-    z-index: 1000;
-    font-size: 20px;
+  height: 14%;
+  width: 13%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 255);
+  border: none;
+  border-radius: 12%;
+  position:absolute;
+  z-index: 1000;
+  font-size: 20px;
 }
 .room{
     position: relative;
@@ -159,23 +187,44 @@ main {
 
 #form{
     width: 100%;
-    height: 85%;
+    height: 90%;
 }
 #add_worker{
     width: 100%;
-    height: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#add_worker button{
+
+ #add_worker button {
     background-color: blue;
-    padding: 5%;
     color: aliceblue;
     border-radius: 12px;
     border: none;
     font-weight: bold;
+    width: 98%;
+    HEIGHT: 32%;
+    FONT-SIZE: 105%;
+    PADDING: 2%;
 }
+#Staffs{
+  height: 100%; 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+}
+
+.container_card_employe{
+  width: 100%;
+  height: 20%;
+}
+
+.info-employe{
+  display: flex;
+  flex-direction: column;
+}
+
 #title{
     margin: 0;
     color: rgb(247, 247, 250);
@@ -190,11 +239,11 @@ main {
 
 .modal_global {
     position: fixed;
-    top: 0;
+
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.475);
+    background-color: rgba(0, 0, 0, 0.144);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,10 +257,10 @@ main {
     padding: 1%;
     width: 80%;
     max-width: 600px;
-    height: 75vh;
+    height: 86%;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgb(10, 141, 223);
 }
 
 .container_btn_titel{
@@ -236,10 +285,10 @@ input{
     font-size: 25px;
 }
 
-.modal-close-btn {
+/* .modal-close-btn {
     position: relative;
-    top: 1%;
-    right: 1%;
+    top: 2%;
+    right: 2%;
     height: 5px;
     font-size: 100%;
     color: blue;
@@ -249,42 +298,36 @@ input{
     border: solid 3px blue;
 }
 
-.modal-close-btn::shadow{
-    color: rgb(244, 246, 247);
-}
-
 .modal-close-btn:hover {
     color: black;
     border: solid 3px black;
-}
+} */
 
-#forms{
-    display: flex;
-    height: auto;
-    width: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border: solid 3px rgba(0, 0, 255, 0.744);
-    border-radius: 12px;
-    padding: 3%;
-    gap: 8px;
+
+
+#info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: auto;
+  width: auto;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 3%;
+  background-color: rgba(0, 0, 255, 0.491);
 }
-#info-form , #exp-form{
-    height: auto;
-    width: auto;
-    overflow-y: auto;
-    border-radius: 12px;
-    padding: 3%;
-    background-color: rgba(0, 0, 255, 0.491);
+input{
+  outline: none;
 }
 
 #modal-title{
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 255, 0.705);
-    width: 80%;
+    width: 90%;
     border-radius: 12px;
+    margin: 2%;
+    left: 35%;
 }
 
 .input_info{
@@ -293,9 +336,27 @@ input{
     width: 90%;
 }
 
-#esp_photo{
-    height: 5Opx;
-    width: 50px;
+.esp_photo{
+    height: 20%;
+    width: 15%;
+    border-radius: 50%;
+}
+
+ .photo{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 2PX solid beige;
+ }
+
+.exp_global , .info_global{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    border: solid rgb(252, 250, 250) 4px;
+    border-radius: 12px;
+    padding: 3%;
+    height: 80%;
 }
 
 #but_add_exp{
@@ -325,17 +386,24 @@ input{
     background-color: rgba(0, 0, 255, 0.991);
 }
 
-@media (max-width: 1023px) {
-    body{
-        margin: 0;
-        padding: 0;
-    }
+@media (max-width: 750px) {
+
+  body{
+      margin: 0;
+      padding: 0;
+  }
   main {
     flex-direction: column;
     width: 100%;
+    height: auto;
+
   }
   #Staff_List {
     width: 100%;
+    position: fixed;
+    position:relative;
+    height: 40vh;
+    overflow-y: auto;
   }
   #floor_plan {
     flex-direction: column;
