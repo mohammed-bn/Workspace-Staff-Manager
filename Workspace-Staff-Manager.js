@@ -46,6 +46,8 @@ function ouvrir(elementEvent, elementDom) {
 }
 
 addExperienceButton.addEventListener("click", () => {
+
+  
   const nouveauBlocExp = document.createElement("div");
   nouveauBlocExp.classList.add("exp_global");
   nouveauBlocExp.innerHTML = `<div class="container_info">

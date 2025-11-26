@@ -470,11 +470,15 @@ input {
   position: absolute;
   display: none;
   background-color: rgb(246, 244, 239);
-  width: 40%;
-  left: 40%;
+  width: auto;
+  left: 20%;
   top: 15%;
   border: solid 5px blue;
   border-radius: 15px;
+  overflow-y: auto;
+  height: 80%;
+right: 20%;
+  /* position: fixed; */
   /* display: flex; */
 }
 #titel_info_imploye{
@@ -603,6 +607,7 @@ input {
   top: 5%;
   border: solid 5px blue;
   border-radius: 15px;
+    /* position: fixed; */
 }
 
 }
