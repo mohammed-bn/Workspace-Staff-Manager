@@ -17,46 +17,67 @@
     <section>
         <main>
             <div id="Staff_List">
+                <h2 id="title">Personnel non affecté</h2>
                 <div id="form">
-                    <h2 id="title">Personnel non affecté</h2>
                     <div id="Staffs">
 
                     </div>
+                </div>
                 <div id="add_worker">
                     <button id="btn_worker">+Ajouter un employé</button>
-                </div>
                 </div>
             </div>
             <div id="floor_plan">
                 <div id="conf-recep">
                     <div id="Conference" class="room">
-                        <img id="img1" src="photo/Conference_room.png" alt="Salle de conférence">
-                        <button class="add_in_room" id="add_in_conference">+</button>
+                        <img id="img1" src="photo/Conference_room.png" alt="Salle de conférence" class="room-image">
+
+                        <div id="conference_room_container">
+
+                        </div>
+                        <button class="add-button" id="add_in_conference">+</button>
                     </div>
+
+
                     <div id="Reception" class="room">
                         <img id="img2" src="photo/Reception.png" alt="Réception">
-                        <button class="add_in_room" id="add_in_reception">+</button>
+                        <div id="reception_room_container">
+
+                        </div>
+                        <button class="add-button" id="add_in_reception">+</button>
                     </div>
                 </div>
                 <div id="serv_secur_staf_arch">
                     <div id="Serv_secur">
                         <div id="server" class="room">
                             <img id="img3" src="photo/server.png" alt="Salle des serveurs">
-                            <button class="add_in_room" id="add_in_server">+</button>
+                            <div id="server_room_container">
+
+                            </div>
+                            <button class="add-button" id="add_in_server">+</button>
                         </div>
                         <div id="Security" class="room">
                             <img id="img4" src="photo/security.png" alt="Salle de sécurité">
-                            <button class="add_in_room" id="add_in_security">+</button>
+                            <div id="securite_room_container">
+
+                            </div>
+                            <button class="add-button" id="add_in_security">+</button>
                         </div>
                     </div>
                     <div id="staf_arch">
                         <div id="Staff" class="room">
                             <img id="img5" src="photo/staff.png" alt="Salle du personnel">
-                            <button class="add_in_room" id="add_in_staff">+</button>
+                            <div id="staf_room_container">
+
+                            </div>
+                            <button class="add-button" id="add_in_staff">+</button>
                         </div>
                         <div id="archive" class="room">
                             <img id="img6" src="photo/archive.png" alt="Salle d'archives">
-                            <button class="add_in_room" id="add_in_archive">+</button>
+                            <div id="archive_room_container">
+
+                            </div>
+                            <button class="add-button" id="add_in_archive">+</button>
                         </div>
                     </div>
                 </div>
@@ -65,48 +86,46 @@
                 <div class="modal_body">
                     <div class="container_btn_titel">
                         <h2 id="modal-title">Ajouter une employé</h2>
-                        <button class="modal-close-btn" id="close_modal" aria-label="Fermé">
-                            <i class="fa-solid fa-square-xmark" id="icon_fermmé_modal"></i>
-                        </button>
+                        <button class="add-button" id="close_modal">x</button>
                     </div>
                     <div id="forms">
                         <form class="" id="info-form" novalidate>
                             <div class="info_global">
-                                
+
                                 <div class="container_info" id="espace_photo">
                                     <div class="esp_photo">
                                         <img class="photo" id="photo_url" src="" alt="">
                                     </div>
                                     <label for="photo">photo (url) :</label><br>
                                     <input class="input_info" type="url" id="photo">
-                                    <span></span>
+                                    <span class="error"></span>
                                 </div>
                                 <div id="neme" class="container_info">
                                     <label for="name">name : </label><br>
-                                    <input class="input_info" type="text" name="" id="name">
-                                    <span></span>
+                                    <input class="input_info" type="text" id="name">
+                                    <span class="error"></span>
                                 </div>
                                 <div class="container_info">
                                     <label for="role">role : </label><br>
                                     <select class="input_info" id="role" class="input_info">
                                         <option value="Réceptionnistes">Réceptionnistes</option>
                                         <option value="Techniciens IT">Techniciens IT</option>
-                                        <option value=" Agents de sécurité"> Agents de sécurité</option>
+                                        <option value="Agents de sécurité"> Agents de sécurité</option>
                                         <option value="Manager">Manager </option>
                                         <option value="Nettoyage">Nettoyage</option>
                                         <option value="Autres rôles ">Autres rôles </option>
                                     </select>
-                                    <span></span>
+                                    <span class="error"></span>
                                 </div>
                                 <div class="container_info">
                                     <label for="Email">Email : </label><br>
-                                    <input class="input_info" type="email" id="Email">
-                                    <span></span>
+                                    <input class="input_info" type="email" id="email">
+                                    <span class="error"></span>
                                 </div>
                                 <div class="container_info">
                                     <label for="phone">phone : </label><br>
                                     <input class="input_info" type="tel" id="phone">
-                                    <span></span>
+                                    <span class="error"></span>
                                 </div>
                             </div>
                             <div class="experiences">
@@ -122,14 +141,14 @@
                 </div>
             </div>
             <div class="modal_global" id="modale_information">
-                <div class="modal_body">
-                    <button id="fermé_modale_information"><i class="fa-solid fa-rectangle-xmark"></i></button>
-                    <h3 id="">informaition imployée</h3>
-                    <p id="name_info"></p>
-                    <p id="role_info"></p>
-                    <p id="email_info"></p>
-                    <p id="phone_info"></p>
-                    <div id="experiences_info"></div>
+                <button id="fermé_modale_information"><i class="fa-solid fa-rectangle-xmark"></i></button>
+                <div class="modal_body information_modal">
+                </div>
+            </div>
+            <div id="aff_employe_room">
+                <button class="add-button" id="btn_fermer_modal">X</button>
+                <div>
+
                 </div>
             </div>
         </main>

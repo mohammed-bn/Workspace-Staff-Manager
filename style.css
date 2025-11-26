@@ -1,7 +1,8 @@
-*{
+* {
   padding: 0px;
   margin: 0px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 main {
   display: flex;
@@ -13,33 +14,34 @@ main {
   border: solid blue 3px;
 }
 
-#card-employe{
-  width: 95%;
+.card-employe {
+  width: 90%;
   height: 85%;
   background-color: rgb(77, 77, 230);
   display: flex;
   justify-self: center;
-  border-radius: 2px;
-  border-radius: 30PX;
+  border-radius: 12px;
   justify-content: space-between;
   padding: 2%;
 }
 
-.content_card{
+.content_card {
   display: flex;
   flex-direction: row;
-  width: 75%;
-  justify-content: space-between;
-  gap: 8%;
+  width: 100%;
+  padding: 2%;
+  align-items: center;
+  justify-content: center;
+  gap: 4%;
 }
 
-.fa-solid{
+.fa-solid {
   height: 100%;
   width: 100%;
   color: rgb(12, 70, 122);
 }
 
-#employe-btn{
+#employe-btn {
   display: flex;
   flex-direction: column;
   width: 20%;
@@ -75,9 +77,8 @@ main {
   width: 47%;
   display: flex;
   flex-direction: column;
- justify-content: space-between;
+  justify-content: space-between;
 }
-
 
 #Serv_secur {
   display: flex;
@@ -93,12 +94,12 @@ main {
 
 #server {
   width: 50%;
-  height: auto;
+  height: 100%;
 }
 
 #Security {
   width: 50%;
-  height: auto;
+  height: 100%;
 }
 
 #Staff {
@@ -135,16 +136,7 @@ main {
   height: 100%;
 }
 
-/* #img7 {
-  width: 100%;
-  height: 100%;
-}
-#img8 {
-  width: 100%;
-  height: 100%;
-} */
-
-.add_in_room{
+.add_in_room {
   height: 14%;
   width: 13%;
   display: flex;
@@ -153,157 +145,241 @@ main {
   background-color: rgb(0, 0, 255);
   border: none;
   border-radius: 12%;
-  position:absolute;
+  position: absolute;
   z-index: 1000;
   font-size: 20px;
 }
-.room{
-    position: relative;
-}
-#add_in_conference{
-    top: 49%;
-    left: 43%;
-}
-#add_in_reception{
-    top: 35%;
-    left: 45%;
-}
-#add_in_server{
-    top: 40%;
-    left: 42%;    
-}
-#add_in_security{
-    top: 40%;
-    left: 40%;
-}
-#add_in_staff{
-    bottom: 45%;
-    right: 45%;
-}
-#add_in_archive{
-    bottom: 50%;
-    right: 50%;
+
+.room {
+  position: relative;
+  width: 100%;
+  width: 100%;
 }
 
-#form{
-    width: 100%;
-    height: 90%;
-}
-#add_worker{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.room-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
 }
 
- #add_worker button {
-    background-color: blue;
-    color: aliceblue;
-    border-radius: 12px;
-    border: none;
-    font-weight: bold;
-    width: 98%;
-    HEIGHT: 32%;
-    FONT-SIZE: 105%;
-    PADDING: 2%;
+
+.room > div {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: calc(100% - 40px);
 }
-#Staffs{
-  height: 100%; 
+
+.delete-btn {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.employee-card {
+  display: flex;
+  align-items: center;
+  gap: 25%;
+  background: rgb(77, 77, 230);
+
+  /* border-radius: 12px; */
+  
+}
+
+
+.photo-wrapper {
+  flex-shrink: 0;
+}
+
+.employee-photo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* INFO */
+.employee-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.employee-role {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+
+.add-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  background: #001995;
+  border: none;
+  color: white;
+  font-size: 22px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.add-button:hover {
+  background: #1e007a;
+}
+
+#add_in_conference {
+  top: 35%;
+  left: 45%;
+}
+#add_in_reception {
+  top: 35%;
+  left: 45%;
+}
+#add_in_server {
+  top: 40%;
+  left: 42%;
+}
+#add_in_security {
+  top: 40%;
+  left: 40%;
+}
+#add_in_staff {
+  top: 45%;
+  right: 45%;
+}
+#add_in_archive {
+top: 40%;
+  right: 50%;
+}
+
+#form {
+  width: 100%;
+  height: 88%;
+}
+#add_worker {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add_worker button {
+  background-color: blue;
+  color: rgb(248, 232, 167);
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  width: 98%;
+  height: 32%;
+  font-size: 105%;
+  padding: 2%;
+}
+#Staffs {
+  height: 100%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 1%;
+  width: 100%;
+  gap: 4px;
+  background-color: rgb(246, 244, 239);
+  margin-top: 2px;
 }
 
-.container_card_employe{
+.container_card_employe {
   width: 100%;
   height: 20%;
 }
 
-.info-employe{
+.info-employe {
   display: flex;
   flex-direction: column;
 }
 
-#title{
-    margin: 0;
-    color: rgb(247, 247, 250);
-    display: flex;
-    justify-content: center;
-    border-radius: 12px;
-    background-color: blue;
-    margin: 2px;
+#title {
+  margin: 0;
+  color: rgb(248, 232, 167);
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+  height: 8%;
+  align-items: center;
 }
 
-/* =========================================== */
 
 .modal_global {
-    position: fixed;
-
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.144);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 1rem;
-    animation: fadeIn 0.3s ease;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.144);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
 }
 .modal_body {
-    background-color: rgb(241, 230, 230);
-    border-radius: 12px;
-    padding: 1%;
-    width: 80%;
-    max-width: 600px;
-    height: 86%;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 10px 30px rgb(10, 141, 223);
+  background-color: rgb(241, 230, 230);
+  border-radius: 12px;
+  padding: 1%;
+  width: 80%;
+  max-width: 600px;
+  height: 86%;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgb(10, 141, 223);
 }
 
-.container_btn_titel{
-    display: flex;
-    justify-content: space-between;
-    
+.container_btn_titel {
+  display: flex;
+  justify-content: space-between;
 }
 
-.container_info{
-    height: 15%;
-    gap: 3%;
+.container_info {
+  height: 15%;
+  gap: 3%;
 }
 
-label{
-    font-size: 25px;
+label {
+  font-size: 25px;
 }
-input{
-    padding: 2%;
+input {
+  padding: 2%;
 }
-#role{
-    padding: 3%;
-    font-size: 25px;
+#role {
+  padding: 3%;
+  font-size: 25px;
 }
-
-/* .modal-close-btn {
-    position: relative;
-    top: 2%;
-    right: 2%;
-    height: 5px;
-    font-size: 100%;
-    color: blue;
-    font-weight: bold;
-    background-color: white;
-    border-radius: 50%;
-    border: solid 3px blue;
-}
-
-.modal-close-btn:hover {
-    color: black;
-    border: solid 3px black;
-} */
-
-
 
 #info-form {
   display: flex;
@@ -316,119 +392,217 @@ input{
   padding: 3%;
   background-color: rgba(0, 0, 255, 0.491);
 }
-input{
+input {
   outline: none;
 }
 
-#modal-title{
-    display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 255, 0.705);
-    width: 90%;
-    border-radius: 12px;
-    margin: 2%;
-    left: 35%;
+#modal-title {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 255, 0.705);
+  width: 90%;
+  border-radius: 12px;
+  margin: 2%;
+  left: 35%;
 }
 
-.input_info{
-    border: solid rgba(0, 0, 255, 0.655) 2px;
-    border-radius: 12px;
-    width: 90%;
+.input_info {
+  border: solid rgba(0, 0, 255, 0.655) 2px;
+  border-radius: 12px;
+  width: 90%;
 }
 
-.esp_photo{
-    height: 20%;
-    width: 15%;
-    border-radius: 50%;
+.esp_photo {
+  height: 40%;
+  width: 25%;
+  border-radius: 50%;
+  align-items: center;
 }
 
- .photo{
+.photo {
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  border: 2PX solid beige;
- }
-
-.exp_global , .info_global{
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-    border: solid rgb(252, 250, 250) 4px;
-    border-radius: 12px;
-    padding: 3%;
-    height: 80%;
+  border: 2px solid beige;
 }
 
-#but_add_exp{
-    background-color: rgba(0, 0, 255, 0.578);
-    border-radius: 12px;
-    border: none;
-    font-size: 20PX;
-    width: auto;
+.exp_global,
+.info_global {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  border: solid rgb(252, 250, 250) 4px;
+  border-radius: 12px;
+  padding: 3%;
+  height: 80%;
 }
-#but_add_exp:hover{
-    background-color: rgba(0, 0, 255, 0.991);
+
+#but_add_exp {
+  background-color: rgba(0, 0, 255, 0.578);
+  border-radius: 12px;
+  border: none;
+  font-size: 20px;
+  width: auto;
 }
-.btn_form{
-    display: flex;
-    justify-content: space-between;
+#but_add_exp:hover {
+  background-color: rgba(0, 0, 255, 0.991);
 }
-#but_fermme, #but_enregistrer{
-    background-color: rgba(0, 0, 255, 0.744);
-    border: none;
-    border-radius: 12px;
-    font-size: 20px;
+.btn_form {
+  display: flex;
+  justify-content: space-between;
 }
-#but_enregistrer:hover{
-    background-color: rgba(0, 0, 255, 0.991);
+#but_fermme,
+#but_enregistrer {
+  background-color: rgba(0, 0, 255, 0.744);
+  border: none;
+  border-radius: 12px;
+  font-size: 20px;
 }
-#but_fermme:hover{
-    background-color: rgba(0, 0, 255, 0.991);
+#but_enregistrer:hover {
+  background-color: rgba(0, 0, 255, 0.991);
+}
+#but_fermme:hover {
+  background-color: rgba(0, 0, 255, 0.991);
+}
+
+#aff_employe_room {
+  z-index: 1000000;
+  position: absolute;
+  display: none;
+  background-color: rgb(246, 244, 239);
+  width: 40%;
+  left: 40%;
+  top: 15%;
+  border: solid 5px blue;
+  border-radius: 15px;
+  /* display: flex; */
+}
+#titel_info_imploye{
+  color: blue;
+  justify-self: center;
+  font-size:xx-large;
+  background-color: rgb(241, 243, 244);
+  border-radius: 12PX;
+  padding: 2%;
+  margin: 2%;
+}
+
+#nom_emp{
+  margin: 4%;
+}
+
+.aff-info{
+  margin: 2%;
+  font-size: x-large;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  background-color: blue;
+  border: solid 5px rgb(247, 246, 245);
+  border-radius: 12PX;
+  justify-content: center;
+  padding: 3%;
+  color: beige;
+}
+
+#info_imp-photo{
+  height: 40%;
+  width: 40%;
+  display: flex;
+  justify-self: center;
 }
 
 @media (max-width: 750px) {
-
-  body{
-      margin: 0;
-      padding: 0;
+  body {
+    margin: 0;
+    padding: 0;
   }
   main {
     flex-direction: column;
     width: 100%;
     height: auto;
-
   }
   #Staff_List {
     width: 100%;
     position: fixed;
-    position:relative;
+    position: relative;
     height: 40vh;
     overflow-y: auto;
   }
+
+  #title {
+    height: 16%;
+  }
+  .container_card_employe {
+    width: 100%;
+    height: 25%;
+  }
+  .esp_photo {
+    height: 58px;
+    width: 8%;
+    border-radius: 50%;
+    align-items: center;
+  }
+
   #floor_plan {
     flex-direction: column;
   }
-  #sp2,
+
   #sp1 {
     display: none;
   }
-  #Serv_secur ,#staf_arch {
- flex-direction: column;
 
-}
-#server ,#Security {
-  width: 100%;
-}
-#conf-recep {
-  width: 100%;
+  #staf_arch {
+    flex-direction: column;
+  }
 
-}
-#serv_secur_staf_arch {
-  width: 100%;
-  height: 100%;
-}
-#Staff , #archive {
-  width: 100%;
+  #Security {
+    width: 100%;
+    height: 100%;
+  }
+  #conf-recep {
+    width: 100%;
+  }
+  #serv_secur_staf_arch {
+    width: 100%;
+    height: 100%;
+  }
+  #Staff,
+  #archive {
+    width: 100%;
+  }
+  .employee-card {
 
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .employee-photo {
+    width: 48px;
+    height: 48px;
+  }
+  #Serv_secur {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 35%;
 }
+#server {
+    width: 100%;
+    height: 100%;
+}
+.room {
+  padding: 4PX;
+}
+
+#aff_employe_room {
+  z-index: 1000000;
+  position: absolute;
+  display: none;
+  background-color: rgb(246, 244, 239);
+  width: 80%;
+  left: 5%;
+  top: 5%;
+  border: solid 5px blue;
+  border-radius: 15px;
+}
+
 }

@@ -26,6 +26,13 @@ const ferméModaleInformation = document.getElementById(
   "fermé_modale_information"
 );
 
+let conference_room_members = [];
+let Reception_room_members = [];
+let serveur_room_members = [];
+let securite_room_members = [];
+let  personnel_room_members = [];
+let archives_room_members = [];
+
 function fermme(elementEvent, elementDom) {
   elementEvent.addEventListener("click", () => {
     elementDom.style.display = "none";
@@ -68,31 +75,38 @@ function renderEmployeList() {
   let containeremploye = document.querySelector("#Staffs");
   const employeData = getemployes();
   containeremploye.innerHTML = "";
-  for (let employe of employeData) {
-    let div = document.createElement("div");
-    div.setAttribute("class", "container_card_employe");
-    console.log(employe.idEmploye);
-    div.innerHTML = `
-                        <div class="card-employe" data-id="${employe.idEmploye}">
-                            <div class="content_card">
-                                <div class="esp_photo">
-                                    <img class="photo" src="${employe.urlPhotoEmploye}" alt="">
-                                </div>
-                                <div class="info-employe">
-                                    <span class="nom">${employe.nameEmploye}</span>
-                                    <span class="role">${employe.roleEmploye}</span>
-                                </div>
-                            </div>
-                            <div id="employe-btn">
-                                <button class="edit_employe_btn" id="modifier_card_employe"><i class="fa-solid fa-pen"></i></button>
-                                <button class="delete_employe_btn" id="fermmr_card_employe"><i class="fa-solid fa-rectangle-xmark"></i></button>
-                            </div>
-                        </div>`;
-    containeremploye.appendChild(div);
-  }
+
+  employeData
+    .filter((worker) => !conference_room_members.includes(worker.idEmploye)
+     && !Reception_room_members.includes(worker.idEmploye)
+     && !serveur_room_members.includes(worker.idEmploye)
+     && !securite_room_members.includes(worker.idEmploye)
+     && !personnel_room_members.includes(worker.idEmploye)
+     && !archives_room_members.includes(worker.idEmploye))
+    .forEach((employe) => {
+      let div = document.createElement("div");
+      div.setAttribute("class", "employee-card");
+      div.innerHTML = `
+        <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+        </div>
+    `;
+
+      div.addEventListener('click',() => {
+          modalAide.style.display = "block";
+          aficherInformationEmploye(employe.idEmploye);
+      })
+      containeremploye.appendChild(div);
+    });
 }
 
-renderEmployeList();
+
 
 const ReglesDeValidation = {
   name: {
@@ -205,8 +219,6 @@ butEnregistrer.addEventListener("click", (e) => {
   photo_url.src = "";
 });
 
-function afficherDetails() {}
-
 function getemployes() {
   let employe = localStorage.getItem("employes");
   console.log("je suis la", employe);
@@ -258,89 +270,540 @@ function getId() {
       modalAfichageInfo.style.display = "flex";
       var idWorker = e.target.closest(".card-employe").getAttribute("data-id");
       console.log(idWorker);
-
       aficherInformationEmploye(idWorker);
     });
   });
 }
 getId();
 
-function aficherInformationEmploye(idWorker) {
-  let employs = getemployes();
-  let emp = employs.find((employ) => employ.idEmploye === idWorker);
-  console.log(emp);
-  // information_employe.name_info.textContent = emp.nameEmploye
-  // information_employe.role_info.textContent = emp.roleEmploye
-  // information_employe.email_info.textContent = emp.emailEmploye
-  // information_employe.phone_info.textContent = emp.phoneEmploye
-  // console.log("jesoi" ,information_employe.name_info.textContent);
-  // information_employe.experiences_info.textContent = emp.experiences
-  const modalInfo = document.querySelector(".information_modal");
-  const newdiv = document.createElement("div");
-  newdiv.innerHTML = `
-            <h3 id="">informaition imployée</h3>
-              <h1>${emp.nameEmploye}</h1>
-              <p id="name_info">${emp.emailEmploye}</p>
-              <p id="role_info">${emp.phoneEmploye}</p>
-              <p id="email_info">${emp.roleEmploye}</p>
-              <img src = ${emp.urlPhotoEmploye}>
-          `;
-  modalInfo.appendChild(newdiv);
-}
-
 fermme(ferméModaleInformation, modalAfichageInfo);
 modificationInfoEmploye();
 
-const ajouterMembre = document.querySelectorAll(".add_in_room");
+// ================================================================================================================
 
-ajouterMembre.forEach((element) => {
-  element.addEventListener("click", (e) => {
-    let workers = getemployes();
-    let room = e.target.closest(".room");
-
-    const list = document.getElementById("aff_employe_room");
-    list.style.display = "block";
-    list.innerHTML = "<button id='fermme_list'>X</button>";
-    for (let item of workers) {
-      list.innerHTML += `
-      <div class="aff_employe" data-id="${item.idEmploye}">
-      <h3>
-      ${item.nameEmploye}
-      </h3>
-      <button class="assignButton">
-        Assign
-      </button>
-
-      </div>
-      
-      `;
-      for (let assignButton of document.getElementsByClassName(
-        "assignButton"
-      )) {
-        assignButton.addEventListener("click", (event) => {
-          let roomId = room.getAttribute("id");
-          let workerId = event.target
-            .closest(".aff_employe")
-            .getAttribute("data-id");
-          console.log(workerId);
-          let updatedWorkers = workers.map((item) => {
-              if(item.idEmploye == workerId){
-                return{...item,assigned:true,room:roomId}
-              }
-          });
-          localStorage.setItem("employes", JSON.stringify(updatedWorkers));
-        });
-      }
-    }
-
-    // list.appendChild(childrenList);
-  });
+const modalAide = document.getElementById("aff_employe_room");
+const btnFermerModal = document.getElementById("btn_fermer_modal");
+btnFermerModal.addEventListener("click", () => {
+  modalAide.style.display = "none";
 });
-// fermme(but_ferme_list, list);
 
-const but_ferme_list = document.getElementById("fermme_list");
-if (but_ferme_list) {
-  but_ferme_list.addEventListener("click", () => {
-    list.style.display = "none";
+renderEmployeList();
+
+function aficherInformationEmploye(idWorker) {
+  let employs = getemployes();
+  let emp = employs.find((employ) => employ.idEmploye === idWorker);
+  modalAide.lastElementChild.innerHTML = `
+            <h3 id="titel_info_imploye">informaition imployée</h3>
+            <img class="employee-photo" id="info_imp-photo" src = ${emp.urlPhotoEmploye}>
+            <h1 id="nom_emp" class="aff-info">${emp.nameEmploye}</h1>
+            <p id="name_info" class="aff-info">${emp.emailEmploye}</p>
+            <p id="role_info" class="aff-info">${emp.phoneEmploye}</p>
+            <p id="email_info" class="aff-info">${emp.roleEmploye}</p>
+          `;
+}
+
+const btnCondference = document.getElementById("add_in_conference");
+btnCondference.addEventListener("click", () => {
+  const rolesAcccepté = [
+    "Réceptionnistes",
+    "Techniciens IT",
+    "Agents de sécurité",
+    "Manager",
+    "Nettoyage",
+    "Autres rôles",
+  ];
+  modalAide.lastElementChild.innerHTML = "";
+  modalAide.style.display = "block";
+
+  let workers = getemployes();
+  workers.filter(
+      (worker) =>
+        !conference_room_members.includes(worker.idEmploye) &&
+        rolesAcccepté.includes(worker.roleEmploye)
+    )
+    .forEach((employe) => {
+      const div = document.createElement("div");
+      div.className = "employee-card";
+      div.innerHTML = `
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+        </div>
+    `;
+
+      div.addEventListener("click", () => {
+        conference_room_members.push(employe.idEmploye);
+
+        renderEmployeList();
+        renderConferenceRoom();
+      });
+
+      modalAide.lastElementChild.appendChild(div);
+    });
+});
+
+function renderConferenceRoom() {
+  let workers = getemployes();
+  const conferenceRoomContainer = document.getElementById(
+    "conference_room_container"
+  );
+
+  conferenceRoomContainer.innerHTML = '';
+
+  conference_room_members.forEach((id) => {
+    const employe = workers.find((emp) => (emp.idEmploye == id));
+
+    const div = document.createElement("div");
+    div.className = "employee-card";
+    div.innerHTML = `
+      <button class="delete-btn">×</button>
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+            
+        </div>
+    `;
+
+    const btnSupp = div.querySelector('.delete-btn');
+    btnSupp.addEventListener('click', () => {
+      conference_room_members = conference_room_members.filter((id) => id != employe.idEmploye);
+      renderEmployeList();
+      renderConferenceRoom();
+    })
+
+    conferenceRoomContainer.append(div);
+  });
+}
+
+
+//==========================================================================================
+
+const btnReseption = document.getElementById("add_in_reception");
+btnReseption.addEventListener("click", () => {
+  const rolesAcccepté = [
+    "Réceptionnistes",
+    "Techniciens IT",
+    "Agents de sécurité",
+    "Manager",
+    "Nettoyage",
+    "Autres rôles",
+  ];
+  modalAide.lastElementChild.innerHTML = "";
+  modalAide.style.display = "block";
+
+  let workers = getemployes();
+  workers.filter(
+      (worker) =>
+        !Reception_room_members.includes(worker.idEmploye) &&
+        rolesAcccepté.includes(worker.roleEmploye)
+    )
+    .forEach((employe) => {
+      const div = document.createElement("div");
+      div.className = "employee-card";
+      div.innerHTML = `
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+        </div>
+    `;
+
+      div.addEventListener("click", () => {
+        Reception_room_members.push(employe.idEmploye);
+
+        renderEmployeList();
+        renderReceptionRoom();
+      });
+
+      modalAide.lastElementChild.appendChild(div);
+    });
+});
+
+function renderReceptionRoom() {
+  let workers = getemployes();
+  const reseptionRoomContainer = document.getElementById(
+    "reception_room_container"
+  );
+
+  reseptionRoomContainer.innerHTML = '';
+
+  Reception_room_members.forEach((id) => {
+    const employe = workers.find((emp) => (emp.idEmploye == id));
+
+    const div = document.createElement("div");
+    div.className = "employee-card";
+    div.innerHTML = `
+      <button class="delete-btn">×</button>
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+            
+        </div>
+    `;
+
+    const btnSupp = div.querySelector('.delete-btn');
+    btnSupp.addEventListener('click', () => {
+      Reception_room_members = Reception_room_members.filter((id) => id != employe.idEmploye);
+      renderEmployeList();
+      renderReceptionRoom();
+    })
+
+    reseptionRoomContainer.append(div);
+  });
+}
+
+
+//==========================================================================================
+
+const btnServer = document.getElementById("add_in_server");
+btnServer.addEventListener("click", () => {
+  const rolesAcccepté = [
+    "Techniciens IT",
+    "Manager",
+    "Nettoyage",
+  ];
+  modalAide.lastElementChild.innerHTML = "";
+  modalAide.style.display = "block";
+
+  let workers = getemployes();
+  workers.filter(
+      (worker) =>
+        !serveur_room_members.includes(worker.idEmploye) &&
+        rolesAcccepté.includes(worker.roleEmploye)
+    )
+    .forEach((employe) => {
+      const div = document.createElement("div");
+      div.className = "employee-card";
+      div.innerHTML = `
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+        </div>
+    `;
+
+      div.addEventListener("click", () => {
+        serveur_room_members.push(employe.idEmploye);
+
+        renderEmployeList();
+        renderServerRoom();
+      });
+
+      modalAide.lastElementChild.appendChild(div);
+    });
+});
+
+function renderServerRoom() {
+  let workers = getemployes();
+  const serverRoomContainer = document.getElementById(
+    "server_room_container"
+  );
+
+  serverRoomContainer.innerHTML = '';
+
+  serveur_room_members.forEach((id) => {
+    const employe = workers.find((emp) => (emp.idEmploye == id));
+
+    const div = document.createElement("div");
+    div.className = "employee-card";
+    div.innerHTML = `
+      <button class="delete-btn">×</button>
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+            
+        </div>
+    `;
+
+    const btnSupp = div.querySelector('.delete-btn');
+    btnSupp.addEventListener('click', () => {
+      serveur_room_members = serveur_room_members.filter((id) => id != employe.idEmploye);
+      renderEmployeList();
+      renderServerRoom()
+    })
+
+    serverRoomContainer.append(div);
+  });
+}
+
+
+//==========================================================================================
+
+
+const btnSecurite = document.getElementById("add_in_security");
+btnSecurite.addEventListener("click", () => {
+  const rolesAcccepté = [
+    "Agents de sécurité",
+    "Manager",
+    "Nettoyage",
+  ];
+  modalAide.lastElementChild.innerHTML = "";
+  modalAide.style.display = "block";
+
+  let workers = getemployes();
+  workers.filter(
+      (worker) =>
+        !securite_room_members.includes(worker.idEmploye) &&
+        rolesAcccepté.includes(worker.roleEmploye)
+    )
+    .forEach((employe) => {
+      const div = document.createElement("div");
+      div.className = "employee-card";
+      div.innerHTML = `
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+        </div>
+    `;
+
+      div.addEventListener("click", () => {
+        securite_room_members.push(employe.idEmploye);
+
+        renderEmployeList();
+        rendersecuriteRoom();
+      });
+
+      modalAide.lastElementChild.appendChild(div);
+    });
+});
+
+function rendersecuriteRoom() {
+  let workers = getemployes();
+  const securiteRoomContainer = document.getElementById(
+    "securite_room_container"
+  );
+
+  securiteRoomContainer.innerHTML = '';
+
+  securite_room_members.forEach((id) => {
+    const employe = workers.find((emp) => (emp.idEmploye == id));
+
+    const div = document.createElement("div");
+    div.className = "employee-card";
+    div.innerHTML = `
+      <button class="delete-btn">×</button>
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+            
+        </div>
+    `;
+
+    const btnSupp = div.querySelector('.delete-btn');
+    btnSupp.addEventListener('click', () => {
+      securite_room_members = securite_room_members.filter((id) => id != employe.idEmploye);
+      renderEmployeList();
+      rendersecuriteRoom();
+    })
+
+    securiteRoomContainer.append(div);
+  });
+}
+
+//==========================================================================================
+
+
+const btnstaf = document.getElementById("add_in_staff");
+btnstaf.addEventListener("click", () => {
+  const rolesAcccepté = [
+    "Réceptionnistes",
+    "Techniciens IT",
+    "Agents de sécurité",
+    "Manager",
+    "Nettoyage",
+    "Autres rôles",
+  ];
+  modalAide.lastElementChild.innerHTML = "";
+  modalAide.style.display = "block";
+
+  let workers = getemployes();
+  workers.filter(
+      (worker) =>
+        !personnel_room_members.includes(worker.idEmploye) &&
+        rolesAcccepté.includes(worker.roleEmploye)
+    )
+    .forEach((employe) => {
+      const div = document.createElement("div");
+      div.className = "employee-card";
+      div.innerHTML = `
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+        </div>
+    `;
+
+      div.addEventListener("click", () => {
+        personnel_room_members.push(employe.idEmploye);
+
+        renderEmployeList();
+        renderstaffsRoom();
+      });
+
+      modalAide.lastElementChild.appendChild(div);
+    });
+});
+
+function renderstaffsRoom() {
+  let workers = getemployes();
+  const staffRoomContainer = document.getElementById(
+    "staf_room_container"
+  );
+
+  staffRoomContainer.innerHTML = '';
+
+  personnel_room_members.forEach((id) => {
+    const employe = workers.find((emp) => (emp.idEmploye == id));
+
+    const div = document.createElement("div");
+    div.className = "employee-card";
+    div.innerHTML = `
+      <button class="delete-btn">×</button>
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+            
+        </div>
+    `;
+
+    const btnSupp = div.querySelector('.delete-btn');
+    btnSupp.addEventListener('click', () => {
+      personnel_room_members = personnel_room_members.filter((id) => id != employe.idEmploye);
+      renderEmployeList();
+      renderstaffsRoom();
+    })
+
+    staffRoomContainer.append(div);
+  });
+}
+
+//==========================================================================================
+// logic de Archive room
+
+const btnArchive = document.getElementById("add_in_archive");
+btnArchive.addEventListener("click", () => {
+  const rolesAcccepté = [
+    "Réceptionnistes",
+    "Techniciens IT",
+    "Agents de sécurité",
+    "Manager",
+  ];
+  modalAide.lastElementChild.innerHTML = "";
+  modalAide.style.display = "block";
+
+  let workers = getemployes();
+  workers.filter(
+      (worker) =>
+        !archives_room_members.includes(worker.idEmploye) &&
+        rolesAcccepté.includes(worker.roleEmploye)
+    )
+    .forEach((employe) => {
+      const div = document.createElement("div");
+      div.className = "employee-card";
+      div.innerHTML = `
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+        </div>
+    `;
+
+      div.addEventListener("click", () => {
+        archives_room_members.push(employe.idEmploye);
+
+        renderEmployeList();
+        renderArchiveRoom();
+      });
+
+      modalAide.lastElementChild.appendChild(div);
+    });
+});
+
+function renderArchiveRoom() {
+  let workers = getemployes();
+  const archiveRoomContainer = document.getElementById(
+    "archive_room_container"
+  );
+
+  archiveRoomContainer.innerHTML = '';
+
+  archives_room_members .forEach((id) => {
+    const employe = workers.find((emp) => (emp.idEmploye == id));
+
+    const div = document.createElement("div");
+    div.className = "employee-card";
+    div.innerHTML = `
+      <button class="delete-btn">×</button>
+      <div class="photo-wrapper">
+            <img class="employee-photo"
+                src="${employe.urlPhotoEmploye}"
+                alt="">
+        </div>
+        <div class="employee-info">
+            <span class="employee-name">${employe.nameEmploye}</span>
+            <span class="employee-role">${employe.roleEmploye}</span>
+            
+        </div>
+    `;
+
+    const btnSupp = div.querySelector('.delete-btn');
+    btnSupp.addEventListener('click', () => {
+      archives_room_members  = archives_room_members .filter((id) => id != employe.idEmploye);
+      renderEmployeList();
+      renderArchiveRoom();
+    })
+
+    archiveRoomContainer.append(div);
   });
 }
